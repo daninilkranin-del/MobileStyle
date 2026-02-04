@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог — MobileStyle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ===== ХЕДЕР ===== -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Mobile</span>Style
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== КАТАЛОГ ТОВАРОВ ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Каталог товаров</h2>
+                <p>Самые востребованные аксессуары для смартфонов</p>
+            </div>
+
+            <!-- Фильтры -->
+            <div class="filters-section">
+                <div class="container">
+                    <div class="filters-container">
+                        <button class="filter-btn active" data-filter="all">Все</button>
+                        <button class="filter-btn" data-filter="cases">Чехлы</button>
+                        <button class="filter-btn" data-filter="glass">Стекла</button>
+                        <button class="filter-btn" data-filter="chargers">Зарядки</button>
+                        <button class="filter-btn" data-filter="earphones">Наушники</button>
+                        <button class="filter-btn" data-filter="cables">Кабели</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Товары -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Товары будут загружаться через JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ФУТЕР ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>MobileStyle</h3>
+                    <p style="color: var(--gray-300); margin-top: 15px; line-height: 1.7;">
+                        Лучшие аксессуары для ваших смартфонов. Гарантия качества и быстрая доставка по всей России.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Каталог</h3>
+                    <ul class="footer-links">
+                        <li><a href="catalog.html?category=cases">Чехлы</a></li>
+                        <li><a href="catalog.html?category=glass">Защитные стекла</a></li>
+                        <li><a href="catalog.html?category=chargers">Зарядные устройства</a></li>
+                        <li><a href="catalog.html?category=earphones">Наушники</a></li>
+                        <li><a href="catalog.html?category=cables">Кабели и адаптеры</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Помощь</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат товара</a></li>
+                        <li><a href="#">Гарантия</a></li>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="contact.html">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+74951234567"><i class="fas fa-phone"></i> +7 (495) 123-45-67</a></li>
+                        <li><a href="mailto:info@mobilestyle.ru"><i class="fas fa-envelope"></i> info@mobilestyle.ru</a></li>
+                        <li><a href="contact.html"><i class="fas fa-map-marker-alt"></i> Москва, Тверская 15</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 MobileStyle. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Инициализация счетчика корзины
+        updateCartCount();
+
+        // Загрузка товаров
+        loadProducts();
+
+        // Фильтрация товаров
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+                filterProducts(filter);
+            });
+        });
+
+        // Фильтрация по параметру в URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+        if (category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.click();
+                }
+            });
+        }
+    </script>
+</body>
+</html>

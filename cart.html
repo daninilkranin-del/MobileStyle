@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина — MobileStyle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cart-page {
+            padding: 80px 0;
+        }
+        .cart-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .cart-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .cart-header h1 {
+            font-size: 36px;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+        .cart-items-container {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 30px;
+        }
+        .cart-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .cart-item-img {
+            width: 100px;
+            height: 100px;
+            background-color: var(--gray-200);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        .cart-item-info {
+            flex: 1;
+        }
+        .cart-item-title {
+            font-size: 18px;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+        .cart-item-price {
+            color: var(--accent-orange);
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .cart-item-qty {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .qty-btn {
+            width: 35px;
+            height: 35px;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .qty-btn:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+        .cart-total-section {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+        }
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .cart-total-row:last-child {
+            border-bottom: none;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-orange);
+        }
+        .checkout-btn {
+            width: 100%;
+            padding: 18px;
+            background-color: var(--accent-green);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 20px;
+        }
+        .checkout-btn:hover {
+            background-color: #0da271;
+            transform: translateY(-2px);
+        }
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .empty-cart i {
+            font-size: 80px;
+            color: var(--gray-300);
+            margin-bottom: 20px;
+        }
+        .empty-cart p {
+            font-size: 18px;
+            color: var(--gray-500);
+            margin-bottom: 30px;
+        }
+        @media (max-width: 768px) {
+            .cart-item {
+                flex-direction: column;
+            }
+            .cart-item-img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ХЕДЕР ===== -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Mobile</span>Style
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== СТРАНИЦА КОРЗИНЫ ===== -->
+    <section class="cart-page">
+        <div class="container">
+            <div class="cart-container">
+                <div class="cart-header">
+                    <h1>Ваша корзина</h1>
+                    <p>Проверьте товары перед оформлением заказа</p>
+                </div>
+
+                <div id="cartContent">
+                    <!-- Контент корзины будет загружен через JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== МОДАЛЬНОЕ ОКНО ОФОРМЛЕНИЯ ЗАКАЗА ===== -->
+    <div class="overlay" id="checkoutOverlay"></div>
+    <div class="cart-modal" id="checkoutModal" style="width: 500px; max-width: 95%;">
+        <div class="cart-header">
+            <h2>Оформление заказа</h2>
+            <button class="cart-close" id="checkoutClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="checkout-form">
+            <div class="form-group">
+                <label for="cardNumber">Номер карты *</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                <small class="card-hint">Принимаем карты: Visa, MasterCard, МИР</small>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group" style="flex: 1;">
+                    <label for="cardExpiry">Срок действия *</label>
+                    <input type="text" id="cardExpiry" placeholder="ММ/ГГ" maxlength="5" required>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label for="cardCVV">CVV *</label>
+                    <input type="password" id="cardCVV" placeholder="123" maxlength="3" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cardName">Имя владельца *</label>
+                <input type="text" id="cardName" placeholder="ИВАНОВ ИВАН ИВАНОВИЧ" required>
+            </div>
+
+            <div class="form-group">
+                <label for="deliveryAddress">Адрес доставки *</label>
+                <textarea id="deliveryAddress" placeholder="г. Москва, ул. Тверская, д. 15, кв. 42" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Телефон для связи *</label>
+                <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
+            </div>
+
+            <div class="checkout-total" id="checkoutTotal">
+                Итого: 0 ₽
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" id="agreeTerms" required>
+                <label for="agreeTerms" style="display: inline; color: var(--gray-700);">
+                    Я согласен с условиями покупки и политикой конфиденциальности
+                </label>
+            </div>
+
+            <button class="cart-checkout" id="confirmOrderBtn">Купить</button>
+        </div>
+    </div>
+
+    <!-- ===== МОДАЛЬНОЕ ОКНО УСПЕХА ===== -->
+    <div class="overlay" id="successOverlay"></div>
+    <div class="cart-modal" id="successModal">
+        <div style="padding: 40px 20px;">
+            <div style="width: 80px; height: 80px; background-color: var(--accent-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 36px;">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2 style="font-size: 28px; color: var(--primary-dark); margin-bottom: 15px;">Спасибо за покупку!</h2>
+            <p style="color: var(--gray-700); margin-bottom: 30px; line-height: 1.6;">
+                Ваш заказ успешно оформлен! Номер заказа: <strong id="orderNumber">№12345</strong><br><br>
+                В ближайшее время с вами свяжется наш менеджер для подтверждения заказа.
+            </p>
+            <a href="index.html" class="btn btn-primary" style="width: 100%; max-width: 300px; margin: 0 auto; display: block; text-align: center;">
+                На главную
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Инициализация счетчика корзины
+        updateCartCount();
+
+        // Загрузка содержимого корзины
+        loadCartContent();
+
+        // Открытие модалки оформления заказа
+        document.getElementById('checkoutBtn').addEventListener('click', () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                showNotification('Корзина пуста!');
+                return;
+            }
+            
+            updateCheckoutTotal();
+            document.getElementById('checkoutModal').classList.add('active');
+            document.getElementById('checkoutOverlay').classList.add('active');
+        });
+
+        // Закрытие модалки оформления заказа
+        document.getElementById('checkoutClose').addEventListener('click', () => {
+            document.getElementById('checkoutModal').classList.remove('active');
+            document.getElementById('checkoutOverlay').classList.remove('active');
+        });
+
+        document.getElementById('checkoutOverlay').addEventListener('click', () => {
+            document.getElementById('checkoutModal').classList.remove('active');
+            document.getElementById('checkoutOverlay').classList.remove('active');
+        });
+
+        // Форматирование номера карты
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{4})/g, '$1 ').trim();
+            e.target.value = value;
+        });
+
+        // Форматирование срока действия
+        document.getElementById('cardExpiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // Форматирование телефона
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                value = '+7 (' + value;
+            }
+            if (value.length > 4) {
+                value = value.substring(0, 4) + ') ' + value.substring(4);
+            }
+            if (value.length > 9) {
+                value = value.substring(0, 9) + '-' + value.substring(9);
+            }
+            if (value.length > 12) {
+                value = value.substring(0, 12) + '-' + value.substring(12);
+            }
+            e.target.value = value.substring(0, 18);
+        });
+
+        // Обновление итоговой суммы
+        function updateCheckoutTotal() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('checkoutTotal').textContent = `Итого: ${total.toLocaleString('ru-RU')} ₽`;
+        }
+
+        // Подтверждение заказа
+        document.getElementById('confirmOrderBtn').addEventListener('click', () => {
+            const cardNumber = document.getElementById('cardNumber').value.trim();
+            const cardExpiry = document.getElementById('cardExpiry').value.trim();
+            const cardCVV = document.getElementById('cardCVV').value.trim();
+            const cardName = document.getElementById('cardName').value.trim();
+            const deliveryAddress = document.getElementById('deliveryAddress').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+
+            if (!cardNumber || cardNumber.replace(/\D/g, '').length < 16) {
+                alert('Пожалуйста, введите корректный номер карты (16 цифр)');
+                return;
+            }
+
+            if (!cardExpiry || !/^\d{2}\/\d{2}$/.test(cardExpiry)) {
+                alert('Пожалуйста, введите корректный срок действия (ММ/ГГ)');
+                return;
+            }
+
+            if (!cardCVV || cardCVV.length !== 3) {
+                alert('Пожалуйста, введите корректный CVV код (3 цифры)');
+                return;
+            }
+
+            if (!cardName || cardName.length < 5) {
+                alert('Пожалуйста, введите имя владельца карты');
+                return;
+            }
+
+            if (!deliveryAddress || deliveryAddress.length < 10) {
+                alert('Пожалуйста, введите полный адрес доставки');
+                return;
+            }
+
+            if (!phone || phone.replace(/\D/g, '').length < 11) {
+                alert('Пожалуйста, введите корректный номер телефона');
+                return;
+            }
+
+            if (!agreeTerms) {
+                alert('Пожалуйста, согласитесь с условиями покупки');
+                return;
+            }
+
+            // Генерируем номер заказа
+            const orderNum = Math.floor(10000 + Math.random() * 90000);
+            document.getElementById('orderNumber').textContent = `№${orderNum}`;
+
+            // Закрываем модалку оформления
+            document.getElementById('checkoutModal').classList.remove('active');
+            document.getElementById('checkoutOverlay').classList.remove('active');
+
+            // Показываем модалку успеха
+            document.getElementById('successModal').classList.add('active');
+            document.getElementById('successOverlay').classList.add('active');
+
+            // Очищаем корзину
+            localStorage.removeItem('cart');
+            updateCartCount();
+            loadCartContent();
+
+            // Сбрасываем форму
+            document.getElementById('cardNumber').value = '';
+            document.getElementById('cardExpiry').value = '';
+            document.getElementById('cardCVV').value = '';
+            document.getElementById('cardName').value = '';
+            document.getElementById('deliveryAddress').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('agreeTerms').checked = false;
+
+            console.log('Заказ оформлен:', {
+                orderNumber: orderNum,
+                deliveryAddress: deliveryAddress,
+                phone: phone
+            });
+        });
+
+        // Закрытие модалки успеха
+        document.getElementById('successOverlay').addEventListener('click', () => {
+            document.getElementById('successModal').classList.remove('active');
+            document.getElementById('successOverlay').classList.remove('active');
+        });
+    </script>
+</body>
+</html>

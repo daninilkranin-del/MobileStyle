@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товар — MobileStyle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .product-detail {
+            padding: 80px 0;
+        }
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .main-image {
+            height: 400px;
+            background: linear-gradient(135deg, var(--gray-200) 0%, var(--gray-100) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-info h1 {
+            font-size: 32px;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+        .product-info p {
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .product-meta {
+            margin: 30px 0;
+        }
+        .meta-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--gray-700);
+        }
+        .meta-label {
+            font-weight: 600;
+            color: var(--primary-dark);
+            min-width: 120px;
+        }
+        .product-actions {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .btn-large {
+            padding: 15px 35px;
+            font-size: 18px;
+        }
+        @media (max-width: 768px) {
+            .product-detail-grid {
+                grid-template-columns: 1fr;
+            }
+            .product-info h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ХЕДЕР ===== -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Mobile</span>Style
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== СТРАНИЦА ТОВАРА ===== -->
+    <section class="product-detail">
+        <div class="container">
+            <a href="catalog.html" class="btn btn-outline" style="display: inline-block; margin-bottom: 20px;">
+                <i class="fas fa-arrow-left"></i> Назад в каталог
+            </a>
+
+            <div class="product-detail-grid">
+                <div class="product-images">
+                    <div class="main-image" id="productImage">
+                        <i class="fas fa-mobile-alt" style="font-size: 120px; color: var(--primary-blue); opacity: 0.3;"></i>
+                    </div>
+                </div>
+
+                <div class="product-info">
+                    <h1 id="productName">Загрузка...</h1>
+                    <div class="product-brand" id="productBrand"></div>
+                    <div class="product-price" id="productPrice"></div>
+                    
+                    <p id="productDescription">Описание товара будет загружено...</p>
+
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Совместимость:</span>
+                            <span id="productCompat"></span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Бренд:</span>
+                            <span id="productBrandDetail"></span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Категория:</span>
+                            <span id="productCategory"></span>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn btn-primary btn-large" id="addToCartBtn">
+                            <i class="fas fa-shopping-cart"></i> В корзину
+                        </button>
+                        <button class="btn btn-outline btn-large">
+                            <i class="fas fa-heart"></i> В избранное
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ФУТЕР ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>MobileStyle</h3>
+                    <p style="color: var(--gray-300); margin-top: 15px; line-height: 1.7;">
+                        Лучшие аксессуары для ваших смартфонов. Гарантия качества и быстрая доставка по всей России.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Каталог</h3>
+                    <ul class="footer-links">
+                        <li><a href="catalog.html?category=cases">Чехлы</a></li>
+                        <li><a href="catalog.html?category=glass">Защитные стекла</a></li>
+                        <li><a href="catalog.html?category=chargers">Зарядные устройства</a></li>
+                        <li><a href="catalog.html?category=earphones">Наушники</a></li>
+                        <li><a href="catalog.html?category=cables">Кабели и адаптеры</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Помощь</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат товара</a></li>
+                        <li><a href="#">Гарантия</a></li>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="contact.html">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+74951234567"><i class="fas fa-phone"></i> +7 (495) 123-45-67</a></li>
+                        <li><a href="mailto:info@mobilestyle.ru"><i class="fas fa-envelope"></i> info@mobilestyle.ru</a></li>
+                        <li><a href="contact.html"><i class="fas fa-map-marker-alt"></i> Москва, Тверская 15</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 MobileStyle. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Инициализация счетчика корзины
+        updateCartCount();
+
+        // Загрузка данных о товаре
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        
+        if (productId) {
+            const products = getProducts();
+            const product = products.find(p => p.id == productId);
+            
+            if (product) {
+                document.getElementById('productName').textContent = product.title;
+                document.getElementById('productBrand').textContent = product.brand;
+                document.getElementById('productPrice').textContent = `${product.price.toLocaleString('ru-RU')} ₽`;
+                document.getElementById('productDescription').textContent = product.description || 'Высококачественный аксессуар для вашего смартфона. Изготовлен из прочных материалов, обеспечивает надежную защиту и удобство использования.';
+                document.getElementById('productCompat').textContent = product.compat;
+                document.getElementById('productBrandDetail').textContent = product.brand;
+                document.getElementById('productCategory').textContent = getCategoryName(product.category);
+                
+                // Обработчик добавления в корзину
+                document.getElementById('addToCartBtn').addEventListener('click', () => {
+                    addToCart(product);
+                    showNotification('Товар добавлен в корзину!');
+                    updateCartCount();
+                });
+            } else {
+                document.getElementById('productName').textContent = 'Товар не найден';
+            }
+        }
+
+        function getCategoryName(category) {
+            const categories = {
+                'cases': 'Чехлы',
+                'glass': 'Стекла',
+                'chargers': 'Зарядки',
+                'earphones': 'Наушники',
+                'cables': 'Кабели'
+            };
+            return categories[category] || category;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobileStyle — Аксессуары для телефонов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ===== ХЕДЕР ===== -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Mobile</span>Style
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== ХЕРО СЕКЦИЯ ===== -->
+    <section class="hero">
+        <div class="container">
+            <h1>Аксессуары для вашего телефона</h1>
+            <p>Чехлы, стекла, зарядки и многое другое — всё для вашего смартфона в одном месте</p>
+            <div class="hero-buttons">
+                <a href="catalog.html" class="btn btn-accent">Каталог товаров</a>
+                <a href="contact.html" class="btn btn-outline">Связаться с нами</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== КАТЕГОРИИ ===== -->
+    <section class="categories section" id="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Категории товаров</h2>
+                <p>Выберите нужную категорию и найдите идеальный аксессуар</p>
+            </div>
+
+            <div class="categories-grid">
+                <a href="catalog.html?category=cases" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Чехлы</h3>
+                    <p>Защитные и стильные</p>
+                </a>
+
+                <a href="catalog.html?category=glass" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-glass-martini-alt"></i>
+                    </div>
+                    <h3>Стекла</h3>
+                    <p>Защитные стекла</p>
+                </a>
+
+                <a href="catalog.html?category=chargers" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Зарядки</h3>
+                    <p>Быстрые зарядные устройства</p>
+                </a>
+
+                <a href="catalog.html?category=earphones" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>Наушники</h3>
+                    <p>Проводные и беспроводные</p>
+                </a>
+
+                <a href="catalog.html?category=cables" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Кабели</h3>
+                    <p>USB-C, Lightning, Micro-USB</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ОТЗЫВЫ ===== -->
+    <section class="reviews section" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Отзывы клиентов</h2>
+                <p>Что говорят о нас наши покупатели</p>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">А</div>
+                        <div class="review-author">
+                            <h4>Александр Петров</h4>
+                            <p>Купил чехол и стекло</p>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">Отличный магазин! Заказал чехол для iPhone, пришел на следующий день. Качество на высоте, цена адекватная. Рекомендую!</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">М</div>
+                        <div class="review-author">
+                            <h4>Мария Иванова</h4>
+                            <p>Постоянный клиент</p>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="review-text">Пользуюсь услугами этого магазина уже год. Всегда быстрая доставка и качественные товары. Особенно порадовали беспроводные наушники — отличное соотношение цены и качества!</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">Д</div>
+                        <div class="review-author">
+                            <h4>Дмитрий Соколов</h4>
+                            <p>Заказывал зарядку</p>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">Заказал зарядное устройство, получил вовремя. Работает отлично, заряжает быстро. Магазину доверяю, буду заказывать ещё!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ФУТЕР ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>MobileStyle</h3>
+                    <p style="color: var(--gray-300); margin-top: 15px; line-height: 1.7;">
+                        Лучшие аксессуары для ваших смартфонов. Гарантия качества и быстрая доставка по всей России.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Каталог</h3>
+                    <ul class="footer-links">
+                        <li><a href="catalog.html?category=cases">Чехлы</a></li>
+                        <li><a href="catalog.html?category=glass">Защитные стекла</a></li>
+                        <li><a href="catalog.html?category=chargers">Зарядные устройства</a></li>
+                        <li><a href="catalog.html?category=earphones">Наушники</a></li>
+                        <li><a href="catalog.html?category=cables">Кабели и адаптеры</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Помощь</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат товара</a></li>
+                        <li><a href="#">Гарантия</a></li>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="contact.html">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+74951234567"><i class="fas fa-phone"></i> +7 (495) 123-45-67</a></li>
+                        <li><a href="mailto:info@mobilestyle.ru"><i class="fas fa-envelope"></i> info@mobilestyle.ru</a></li>
+                        <li><a href="contact.html"><i class="fas fa-map-marker-alt"></i> Москва, Тверская 15</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 MobileStyle. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Инициализация счетчика корзины
+        updateCartCount();
+    </script>
+</body>
+</html>

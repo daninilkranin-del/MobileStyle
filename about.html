@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас — MobileStyle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-section {
+            padding: 80px 0;
+        }
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .about-content h2 {
+            font-size: 36px;
+            color: var(--primary-dark);
+            margin-bottom: 30px;
+        }
+        .about-content p {
+            font-size: 18px;
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        .stat-label {
+            font-size: 16px;
+            color: var(--gray-700);
+        }
+        .team-section {
+            margin-top: 60px;
+            text-align: center;
+        }
+        .team-section h3 {
+            font-size: 28px;
+            color: var(--primary-dark);
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== ХЕДЕР ===== -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Mobile</span>Style
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== СТРАНИЦА "О НАС" ===== -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2>О компании MobileStyle</h2>
+                <p>
+                    MobileStyle — это современный интернет-магазин аксессуаров для мобильных устройств, основанный в 2018 году. Мы специализируемся на продаже качественных чехлов, защитных стекол, зарядных устройств, наушников и кабелей для смартфонов всех популярных брендов.
+                </p>
+                <p>
+                    Наша миссия — обеспечить каждого пользователя надежными и стильными аксессуарами для его гаджетов. Мы тщательно отбираем поставщиков и работаем только с проверенными брендами, чтобы гарантировать высокое качество продукции.
+                </p>
+                <p>
+                    Благодаря прямым поставкам от производителей мы предлагаем конкурентные цены и оперативную доставку по всей России. Наша команда постоянно расширяет ассортимент, чтобы вы могли найти всё необходимое для своего смартфона в одном месте.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Брендов</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">Товаров</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10000+</div>
+                        <div class="stat-label">Довольных клиентов</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24ч</div>
+                        <div class="stat-label">Доставка</div>
+                    </div>
+                </div>
+
+                <p>
+                    Мы гордимся тем, что наши клиенты доверяют нам выбор аксессуаров для своих устройств. Каждый день мы работаем над улучшением сервиса и расширением ассортимента, чтобы соответствовать ожиданиям наших покупателей.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ФУТЕР ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>MobileStyle</h3>
+                    <p style="color: var(--gray-300); margin-top: 15px; line-height: 1.7;">
+                        Лучшие аксессуары для ваших смартфонов. Гарантия качества и быстрая доставка по всей России.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Каталог</h3>
+                    <ul class="footer-links">
+                        <li><a href="catalog.html?category=cases">Чехлы</a></li>
+                        <li><a href="catalog.html?category=glass">Защитные стекла</a></li>
+                        <li><a href="catalog.html?category=chargers">Зарядные устройства</a></li>
+                        <li><a href="catalog.html?category=earphones">Наушники</a></li>
+                        <li><a href="catalog.html?category=cables">Кабели и адаптеры</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Помощь</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат товара</a></li>
+                        <li><a href="#">Гарантия</a></li>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="contact.html">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+74951234567"><i class="fas fa-phone"></i> +7 (495) 123-45-67</a></li>
+                        <li><a href="mailto:info@mobilestyle.ru"><i class="fas fa-envelope"></i> info@mobilestyle.ru</a></li>
+                        <li><a href="contact.html"><i class="fas fa-map-marker-alt"></i> Москва, Тверская 15</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 MobileStyle. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Инициализация счетчика корзины
+        updateCartCount();
+    </script>
+</body>
+</html>
